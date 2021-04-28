@@ -42,9 +42,9 @@ For successful compilation and execution, the following software is required:
   * Used to compile the ReactJS front-end
 * `git` -- **Git -- distributed version control system**
   * Custom-MADE employs _git_ to manage the available languages and allows for connecting projects to existing git repositories
-<!-- * `node.js` -- **Node Package Manager**
+* `node.js` -- **Node Package Manager**
   * Used to compile the ReactJS front-end
- -->
+  * Version >= 10.11.0 & < 12 (can be installed using nvm e.g. `nvm i 10.11.0`)
 ## Issues and Bug Reports
 
 Feel free to submit issues and enhancement requests.
