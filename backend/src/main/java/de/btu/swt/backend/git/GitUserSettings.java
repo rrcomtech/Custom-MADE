@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.Embeddable;
+import java.util.Objects;
 
 @Embeddable
 @NoArgsConstructor
@@ -23,7 +24,24 @@ public class GitUserSettings {
     @NonNull
     private String email;
 
-    public boolean equals(GitUserSettings other) {
-        return name.equals(other.name) && email.equals(other.email);
+    public boolean equals(Object o) {
+        if (o instanceof GitUserSettings) {
+            GitUserSettings settings = (GitUserSettings) o;
+            return this.name.equals(settings.getName()) && this.email.equals(settings.getEmail());
+        }
+        return false;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public int hashCode() {
+        return this.name.hashCode() + this.email.hashCode();
+    }
+
 }
