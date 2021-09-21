@@ -268,5 +268,26 @@ public class DataInitializer {
         // log.info("Initialized: " + fileRepository.save(mdrGrammarFile));
         log.info("Initialized: " + fileRepository.save(mdrSimpleDslFile));
         log.info("Initialized: " + fileRepository.save(mdrDslFile));
+
+        setupProjectWorkspaces();
     }
+
+    /**
+     * Creates a folder for each of the workspaces if not already present.
+     * Uses the folder src/main/resources/workspaces.
+     */
+    private boolean setupProjectWorkspaces() {
+
+        String workspacesPath = System.getProperty("user.dir") + "/src/main/resources/workspaces/";
+
+        boolean success = true;
+        for (Project project : projectRepository.findAll()) {
+            // It is written that way, because there is a conflict with another class also named File.
+            success = success && new java.io.File(workspacesPath + project.getId()).mkdirs();
+        }
+
+        return success;
+
+    }
+
 }
